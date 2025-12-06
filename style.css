@@ -55,10 +55,6 @@ h1 {
     background: #45a049;
 }
 
-/* .lista-tarefas {
-    list-style:none;
-} */
-
 .tarefa {
     display: flex;
     justify-content: space-between;
