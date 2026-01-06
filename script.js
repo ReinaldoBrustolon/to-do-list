@@ -3,72 +3,93 @@ const adicionar = document.querySelector('#adicionar-btn')
 const container = document.querySelector('.container')
 const ul = document.querySelector('.lista-tarefas')
 formulario = document.querySelector('.form')
-const lista_tarefas_armazenadas = JSON.parse(localStorage.getItem('tarefas') || '[]')
-console.log(lista_tarefas_armazenadas)
-const element_of_list = ''
+const lista_tarefas_armazenadas = JSON.parse(localStorage.
+getItem('tarefas') || '[]')
+console.log('locolStorage-data-obtained',lista_tarefas_armazenadas)
 
 adicionar.addEventListener('click',lista_de_tarefas)
+
+function atualizarLocolstorage() {
+    localStorage.setItem('tarefas',JSON.stringify(lista_tarefas_armazenadas))
+}
 
                  //Inicio do formulário//
 formulario.addEventListener('submit',(e)=>{
 e.preventDefault()
-})//fIM formulário (submit)
+})             //fIM formulário (submit)
 
-function atualizarLocolstorage() {
-localStorage.setItem('tarefas',JSON.stringify(lista_tarefas_armazenadas))
-
-}
-             
-           //Início da função//
-function lista_de_tarefas() {
+//lista_de_tarefas//
+function lista_de_tarefas(element) {
 if (entrada.value.trim() === '') return alert('Digite uma tarefa')
-
 lista_tarefas_armazenadas.push(entrada.value)
-atualizarLocolstorage()
-render()
-entrada.value = '' 
+
+render_temporaria()
+
+if (element === entrada.value) {
+ render_permanente()
 }
-       
-// Resolver o problema dessa lista
-// Já consegui salvar permanetemente os dados que vem do locolStorare, mas estão retornando duplicados enquanto não atualizo a página, mas quando a página é atualizada, então os dados ficam corretos! 
+atualizarLocolstorage()
+entrada.value = '' 
 
-function render() {
+}
 
-lista_tarefas_armazenadas.forEach((element_of_list)=> {
+function render_temporaria() {
+    ul.innerHTML += `
+    <li class="tarefa">${entrada.value}
+    <button class="concluir-btn">Concluir</button>
+    <button class="remover-btn">Remover</button>
+    </li>
+    `
+} 
+
+function render_permanente() {
+
+lista_tarefas_armazenadas.forEach((element)=> {
 
 let li = document.createElement('li')
 li.classList.add('tarefa') 
 ul.append(li)
-console.log(element_of_list)
-li.textContent = element_of_list
+li.textContent = element
+
 const button1 = document.createElement('button')
 button1.classList.add('concluir-btn')
 button1.textContent = 'Concluir'
 li.append(button1)
-button1.addEventListener('click', () => {
+button1.addEventListener('click', () => { 
+ 
+})        //end-button1 
 
-})
-  
 const button2 = document.createElement('button')
 button2.classList.add('remover-btn')
 button2.textContent = 'Remover'
 li.append(button2) 
-button2.addEventListener('click', ()=>{
-ul.remove()
 
-}) 
-
-});
+button2.onclick = () => {
+li.remove()
 
 
+atualizarLocolstorage()
 
-}       
-render()
-           
+} //end button 2
+
+});//end-forEach
+
+}//end-render_permanente
+
+render_permanente()
+
+
+
+
+
+
+
+   
+
       
         
     
        
    
       
-      
+       
