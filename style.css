@@ -41,17 +41,17 @@ h1 {
     font-size: 16px;
 }
 
-#adicionar-btn {
+.adicionar-btn {
     padding: 12px 20px;
     background: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition:background-color ease 0.3s;
 }
 
-#adicionar-btn:hover {
+.adicionar-btn:hover {
     background: #45a049;
 }
 
@@ -71,11 +71,20 @@ h1 {
     flex: 1;
 }
 
-.tarefa.concluida .tarefa-texto {
+.tarefa .concluida .tarefa-texto {
     text-decoration: line-through;
     color: #888;
 }
- 
+
+.tarefa_concluida {
+    background-color: #4CAF50;
+     transition:background-color ease 0.3s;
+}
+
+.tarefa_concluida:hover {
+    background: #45a049;
+}
+
 .concluir-btn, .remover-btn {
     padding: 8px 12px;
     margin-left: 8px;

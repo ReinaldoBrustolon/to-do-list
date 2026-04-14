@@ -40,7 +40,7 @@ function render_temporaria() {
     <button class="remover-btn">Remover</button>
     </li>
     `
-} 
+}
 
 function render_permanente() {
 
@@ -77,6 +77,7 @@ atualizarLocolstorage()
 }//end-render_permanente
 
 render_permanente()
+//end function
 
 
 
