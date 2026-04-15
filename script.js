@@ -1,5 +1,5 @@
 const entrada = document.querySelector('#tarefa-input')
-const adicionar = document.querySelector('#adicionar-btn')
+const adicionar = document.querySelector('.adicionar-btn')
 const container = document.querySelector('.container')
 const ul = document.querySelector('.lista-tarefas')
 formulario = document.querySelector('.form')
@@ -55,18 +55,22 @@ const button1 = document.createElement('button')
 button1.classList.add('concluir-btn')
 button1.textContent = 'Concluir'
 li.append(button1)
-button1.addEventListener('click', () => { 
- 
-})        //end-button1 
+
+button1.onclick = () => {
+li.classList.add('tarefa_concluida')
+// button1.classLis.add('takCompleted')
+taskli(li)
+}      //end-button1 
+
 
 const button2 = document.createElement('button')
 button2.classList.add('remover-btn')
 button2.textContent = 'Remover'
 li.append(button2) 
 
+
 button2.onclick = () => {
 li.remove()
-
 
 atualizarLocolstorage()
 
@@ -79,6 +83,9 @@ atualizarLocolstorage()
 render_permanente()
 //end function
 
+function taskli(li) {
+li.textContent = li
+}
 
 
 
